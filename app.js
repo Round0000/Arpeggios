@@ -1,12 +1,40 @@
 let sample = "piano";
 
+//
+let currConf = {
+  arp1: {
+    tempo: 0,
+    notes: [],
+    random: false,
+    tone: "full",
+  },
+  arp2: {
+    tempo: 0,
+    notes: [],
+    random: false,
+    tone: "full",
+  },
+  arp3: {
+    tempo: 0,
+    notes: [],
+    random: false,
+    tone: "full",
+  },
+  arp4: {
+    tempo: 0,
+    notes: [],
+    random: false,
+    tone: "full",
+  },
+};
+//
+
 function getNote(key) {
   let audio = new Audio(`/audio/${sample}/${key}.mp3`);
   return audio;
 }
 
 function playNote(key) {
-  console.log(key);
   let note = getNote(key);
   note.currentTime = 0;
   note.play();
@@ -70,7 +98,7 @@ let scale_C_Lydian = [
   keys[24],
 ];
 
-// Arpeggiator
+// arp
 function getRandom(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -79,19 +107,7 @@ function getRandom(min, max) {
 
 // const interval = setInterval(arp, 1000);
 
-function arpRandom(scale, tempo, tone) {
-  setInterval(() => {
-    if (tone === "low") {
-      playNote(scale[getRandom(0, 6)]);
-    } else if (tone === "high") {
-      playNote(scale[getRandom(7, scale.length - 1)]);
-    } else {
-      playNote(scale[getRandom(0, scale.length - 1)]);
-    }
-  }, tempo);
-}
-
-function arp(scale, tempo, tone, selectedNotes) {
+function arpeggiate(scale, tempo, random, tone, selectedNotes) {
   let notes = [];
 
   if (tone === "low") {
@@ -114,133 +130,173 @@ function arp(scale, tempo, tone, selectedNotes) {
     if (selectedNotes.length > 0) {
       selectedNotes.forEach((n) => {
         notes.push(scale[n]);
-        notes.push(scale[n + 7]);
+      });
+      selectedNotes.forEach((n) => {
+        notes.push(scale[7 + Number(n)]);
       });
     } else {
       notes = scale;
     }
   }
 
-  console.log(notes);
+  if (random) {
+    setInterval(() => {
+      playNote(notes[getRandom(0, notes.length - 1)]);
+    }, tempo);
+  } else {
+    let counter = 0;
 
-  let counter = 0;
-
-  setInterval(() => {
-    playNote(notes[counter]);
-    if (counter + 1 === notes.length) {
-      counter = 0;
-    } else {
-      counter++;
-    }
-  }, tempo);
+    setInterval(() => {
+      playNote(notes[counter]);
+      if (counter + 1 === notes.length) {
+        counter = 0;
+      } else {
+        counter++;
+      }
+    }, tempo);
+  }
 }
 
-arpeggiator.addEventListener("submit", (e) => {
+arp.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // e.target.notes.forEach((el) => {
-  //   if (el.checked) {
-  //     console.log(el.parentElement.parentElement.id, el.value);
-  //   }
-  // });
+  // Config save
 
-  // if (e.target.random.checked) {
-  //   console.log("Random checked");
-  // }
+  currConf.arp1.tempo = Number(arp.arp1.value);
+  currConf.arp2.tempo = Number(arp.arp2.value);
+  currConf.arp3.tempo = Number(arp.arp3.value);
+  currConf.arp4.tempo = Number(arp.arp4.value);
+  arp.notesArp1.forEach((n) => {
+    if (n.checked) {
+      currConf.arp1.notes.push(n.value);
+    }
+  });
+  arp.notesArp2.forEach((n) => {
+    if (n.checked) {
+      currConf.arp2.notes.push(n.value);
+    }
+  });
+  arp.notesArp3.forEach((n) => {
+    if (n.checked) {
+      currConf.arp3.notes.push(n.value);
+    }
+  });
+  arp.notesArp4.forEach((n) => {
+    if (n.checked) {
+      currConf.arp4.notes.push(n.value);
+    }
+  });
+  currConf.arp1.random = arp.randomArp1.checked;
+  currConf.arp2.random = arp.randomArp2.checked;
+  currConf.arp3.random = arp.randomArp3.checked;
+  currConf.arp4.random = arp.randomArp4.checked;
+  currConf.arp1.tone = arp.toneArp1.value;
+  currConf.arp2.tone = arp.toneArp2.value;
+  currConf.arp3.tone = arp.toneArp3.value;
+  currConf.arp4.tone = arp.toneArp4.value;
+
+  console.log(currConf);
+
+  //
 
   const notesArp1 = [];
-  arpeggiator.notesArp1.forEach((n) => {
+  arp.notesArp1.forEach((n) => {
     if (n.checked) {
       notesArp1.push(n.value);
     }
   });
   const notesArp2 = [];
-  arpeggiator.notesArp2.forEach((n) => {
+  arp.notesArp2.forEach((n) => {
     if (n.checked) {
       notesArp2.push(n.value);
     }
   });
   const notesArp3 = [];
-  arpeggiator.notesArp3.forEach((n) => {
+  arp.notesArp3.forEach((n) => {
     if (n.checked) {
       notesArp3.push(n.value);
     }
   });
   const notesArp4 = [];
-  arpeggiator.notesArp4.forEach((n) => {
+  arp.notesArp4.forEach((n) => {
     if (n.checked) {
       notesArp4.push(n.value);
     }
   });
 
-  console.log(notesArp1);
-
-  if (arpeggiator.arp1.value >= 100) {
-    if (arpeggiator.randomArp1.checked) {
-      arpRandom(
-        scale_C_Lydian,
-        arpeggiator.arp1.value,
-        arpeggiator.toneArp1.value,
-        notesArp1
-      );
-    } else {
-      arp(
-        scale_C_Lydian,
-        arpeggiator.arp1.value,
-        arpeggiator.toneArp1.value,
-        notesArp1
-      );
-    }
+  if (arp.arp1.value >= 100) {
+    arpeggiate(
+      scale_C_Lydian,
+      arp.arp1.value,
+      arp.randomArp1.checked,
+      arp.toneArp1.value,
+      notesArp1
+    );
   }
-  if (arpeggiator.arp2.value >= 100) {
-    if (arpeggiator.randomArp2.checked) {
-      arpRandom(
-        scale_C_Lydian,
-        arpeggiator.arp2.value,
-        arpeggiator.toneArp2.value,
-        notesArp2
-      );
-    } else {
-      arp(
-        scale_C_Lydian,
-        arpeggiator.arp2.value,
-        arpeggiator.toneArp2.value,
-        notesArp2
-      );
-    }
+  if (arp.arp2.value >= 100) {
+    arpeggiate(
+      scale_C_Lydian,
+      arp.arp2.value,
+      arp.randomArp2.checked,
+      arp.toneArp2.value,
+      notesArp2
+    );
   }
-  if (arpeggiator.arp3.value >= 100) {
-    if (arpeggiator.randomArp3.checked) {
-      arpRandom(
-        scale_C_Lydian,
-        arpeggiator.arp3.value,
-        arpeggiator.toneArp3.value,
-        notesArp3
-      );
-    } else {
-      arp(
-        scale_C_Lydian,
-        arpeggiator.arp3.value,
-        arpeggiator.toneArp3.value,
-        notesArp3
-      );
-    }
+  if (arp.arp3.value >= 100) {
+    arpeggiate(
+      scale_C_Lydian,
+      arp.arp3.value,
+      arp.randomArp3.checked,
+      arp.toneArp3.value,
+      notesArp3
+    );
   }
-  if (arpeggiator.arp4.value >= 100) {
-    if (arpeggiator.randomArp4.checked) {
-      arpRandom(
-        scale_C_Lydian,
-        arpeggiator.arp4.value,
-        arpeggiator.toneArp4.value,
-        notesArp4
-      );
-    } else {
-      arp(
-        scale_C_Lydian,
-        arpeggiator.arp4.value,
-        arpeggiator.toneArp4.value,
-        notesArp4
-      );
-    }
+  if (arp.arp4.value >= 100) {
+    arpeggiate(
+      scale_C_Lydian,
+      arp.arp4.value,
+      arp.randomArp4.checked,
+      arp.toneArp4.value,
+      notesArp4
+    );
   }
 });
+
+//
+//
+//
+
+currConf = {
+  arp1: {
+    tempo: 150,
+    notes: ["0", "2", "4", "6", "0", "2", "3", "5", "6"],
+    random: false,
+    tone: "full",
+  },
+  arp2: {
+    tempo: 0,
+    notes: ["0", "2", "4", "6"],
+    random: false,
+    tone: "",
+  },
+  arp3: {
+    tempo: 0,
+    notes: [],
+    random: false,
+    tone: "",
+  },
+  arp4: {
+    tempo: 0,
+    notes: [],
+    random: false,
+    tone: "",
+  },
+};
+
+// arpeggiate(
+//   scale_C_Lydian,
+//   currConf.arp1.tempo,
+//   false,
+//   currConf.arp1.tone,
+//   currConf.arp1.notes
+// );
