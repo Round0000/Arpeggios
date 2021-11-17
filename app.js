@@ -8,7 +8,7 @@ let currConf = {
     random: false,
     tone: "full",
   },
-  arp2: {
+  arp1: {
     tempo: 0,
     notes: [],
     random: false,
@@ -108,6 +108,9 @@ function getRandom(min, max) {
 // const interval = setInterval(arp, 1000);
 
 function arpeggiate(scale, tempo, random, tone, selectedNotes) {
+  if (tempo < 150) {
+    return;
+  }
   let notes = [];
 
   if (tone === "low") {
@@ -266,37 +269,68 @@ arp.addEventListener("submit", (e) => {
 //
 //
 
-currConf = {
-  arp1: {
-    tempo: 150,
-    notes: ["0", "2", "4", "6", "0", "2", "3", "5", "6"],
-    random: false,
-    tone: "full",
+let demos = [
+  {
+    arp1: {
+      tempo: 1400,
+      notes: ["0", "2", "3", "6", "4"],
+      random: false,
+      tone: "low",
+    },
+    arp2: {
+      tempo: 1800,
+      notes: ["0", "2", "4", "6"],
+      random: true,
+      tone: "high",
+    },
+    arp3: {
+      tempo: 200,
+      notes: ["6", "2"],
+      random: true,
+      tone: "full",
+    },
+    arp4: {
+      tempo: 300,
+      notes: ["0", "2", "4"],
+      random: false,
+      tone: "low",
+    },
   },
-  arp2: {
-    tempo: 0,
-    notes: ["0", "2", "4", "6"],
-    random: false,
-    tone: "",
-  },
-  arp3: {
-    tempo: 0,
-    notes: [],
-    random: false,
-    tone: "",
-  },
-  arp4: {
-    tempo: 0,
-    notes: [],
-    random: false,
-    tone: "",
-  },
-};
+];
 
-// arpeggiate(
-//   scale_C_Lydian,
-//   currConf.arp1.tempo,
-//   false,
-//   currConf.arp1.tone,
-//   currConf.arp1.notes
-// );
+function arpConfig(source) {
+  arpeggiate(
+    scale_C_Lydian,
+    source.arp1.tempo,
+    false,
+    source.arp1.tone,
+    source.arp1.notes
+  );
+  arpeggiate(
+    scale_C_Lydian,
+    source.arp2.tempo,
+    false,
+    source.arp2.tone,
+    source.arp2.notes
+  );
+  arpeggiate(
+    scale_C_Lydian,
+    source.arp3.tempo,
+    false,
+    source.arp3.tone,
+    source.arp3.notes
+  );
+  arpeggiate(
+    scale_C_Lydian,
+    source.arp4.tempo,
+    false,
+    source.arp4.tone,
+    source.arp4.notes
+  );
+}
+
+document.addEventListener("click", (e) => {
+  if (e.target.dataset.demo) {
+    arpConfig(demos[0]);
+  }
+});

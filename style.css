@@ -114,3 +114,24 @@ body {
   font-weight: bold;
   text-align: center;
 }
+
+/* Demos */
+.demos {
+  margin-top: 3em;
+  background-color: snow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em 1em 2em;
+}
+
+.demoBtns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.demoBtn {
+  display: block;
+  padding: .5em 2em;
+  margin: .5em;
+}
