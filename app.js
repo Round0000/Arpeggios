@@ -1,4 +1,4 @@
-let sample = "piano";
+let sample = "bell";
 
 function getNote(key) {
   let audio = new Audio(`/audio/${sample}/${key}.mp3`);
