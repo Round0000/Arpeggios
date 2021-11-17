@@ -66,16 +66,16 @@ function arp(scale, tempo, tone) {
 arpeggiator.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (
-    arpeggiator.tempo.value >= 200 &&
-    arpeggiator.tempo2.value >= 200 &&
-    arpeggiator.tempo3.value >= 200 &&
-    arpeggiator.tempo4.value >= 200
-  ) {
+  if (arpeggiator.tempo.value >= 200) {
     arp(scale_C_Lydian, arpeggiator.tempo.value, "low");
+  }
+  if (arpeggiator.tempo2.value >= 200) {
     arp(scale_C_Lydian, arpeggiator.tempo2.value, "high");
+  }
+  if (arpeggiator.tempo3.value >= 200) {
     arp(scale_C_Lydian, arpeggiator.tempo3.value, "high");
+  }
+  if (arpeggiator.tempo4.value >= 200) {
     arp(scale_C_Lydian, arpeggiator.tempo4.value, "high");
-    arpeggiator.reset();
   }
 });
