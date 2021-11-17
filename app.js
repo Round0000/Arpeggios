@@ -8,6 +8,11 @@ function playNote(key) {
   let note = getNote(key);
   note.currentTime = 0;
   note.play();
+
+  document.getElementById(key).classList.add("keyAnim");
+  setTimeout(() => {
+    document.getElementById(key).classList.remove("keyAnim");
+  }, 150);
 }
 
 document.addEventListener("click", (e) => {
@@ -21,9 +26,30 @@ document.addEventListener("click", (e) => {
   }
 });
 
-let keys = document.querySelectorAll(".key");
+let keyboard_keys = document.querySelectorAll(".key");
 
-let scale_C_Major = document.querySelectorAll(".key.n");
+let keys = [];
+keyboard_keys.forEach((key) => {
+  keys.push(key.id);
+});
+
+let scale_C_Major = [
+  keys[0],
+  keys[2],
+  keys[4],
+  keys[5],
+  keys[7],
+  keys[9],
+  keys[11],
+  keys[12],
+  keys[14],
+  keys[16],
+  keys[17],
+  keys[19],
+  keys[21],
+  keys[23],
+  keys[24],
+];
 let scale_C_Lydian = [
   keys[0],
   keys[2],
@@ -54,11 +80,11 @@ function getRandom(min, max) {
 function arp(scale, tempo, tone) {
   setInterval(() => {
     if (tone === "low") {
-      scale[getRandom(0, Math.round(scale.length / 2))].click();
+      playNote(scale[getRandom(0, 6)]);
     } else if (tone === "high") {
-      scale[getRandom(Math.round(scale.length / 2), scale.length - 1)].click();
+      playNote(scale[getRandom(7, scale.length - 1)]);
     } else {
-      scale[getRandom(0, scale.length - 1)].click();
+      playNote(scale[getRandom(0, scale.length - 1)]);
     }
   }, tempo);
 }
