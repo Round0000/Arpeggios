@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Piano</title>
+    <style>
+      body {
+        font-family: "Atkinson Hyperlegible", sans-serif;
+      }
+
+      .keyboard {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
+        gap: 6px;
+        background-color: #000;
+        padding: 1em;
+        margin-bottom: 2em;
+        background: linear-gradient(120deg, #000, rgb(59, 35, 3));
+      }
+
+      .key {
+        all: unset;
+        background-color: #111;
+        color: #fff;
+        padding: 0.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        height: 3em;
+      }
+
+      .keyAnim {
+        background-color: orange !important;
+      }
+
+      .key.n {
+        background-color: snow;
+        color: #222;
+      }
+      .key.s {
+        background-color: #222;
+        color: snow;
+      }
+
+      #arpeggiator {
+        display: flex;
+        width: max-content;
+        margin: 1em auto;
+        height: 3em;
+      }
+
+      #arpeggiator input {
+          padding: .25em;
+          font-size: 1.25rem;
+          width: 4em;
+      }
+
+      #arpeggiator button {
+          padding: .25em 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="keyboard">
+      <button class="key n" id="2C">2C</button>
+      <button class="key s" id="2Cd">2C#</button>
+      <button class="key n" id="2D">2D</button>
+      <button class="key s" id="2Dd">2D#</button>
+      <button class="key n" id="2E">2E</button>
+      <button class="key n" id="2F">2F</button>
+      <button class="key s" id="2Fd">2F#</button>
+      <button class="key n" id="2G">2G</button>
+      <button class="key s" id="2Gd">2G#</button>
+      <button class="key n" id="2A">2A</button>
+      <button class="key s" id="2Ad">2A#</button>
+      <button class="key n" id="2B">2B</button>
+      <button class="key n" id="3C">3C</button>
+      <button class="key s" id="3Cd">3C#</button>
+      <button class="key n" id="3D">3D</button>
+      <button class="key s" id="3Dd">3D#</button>
+      <button class="key n" id="3E">3E</button>
+      <button class="key n" id="3F">3F</button>
+      <button class="key s" id="3Fd">3F#</button>
+      <button class="key n" id="3G">3G</button>
+      <button class="key s" id="3Gd">3G#</button>
+      <button class="key n" id="3A">3A</button>
+      <button class="key s" id="3Ad">3A#</button>
+      <button class="key n" id="3B">3B</button>
+      <button class="key n" id="4C">4C</button>
+    </div>
+
+    <form id="arpeggiator">
+      <input type="number" name="tempo" min="200" max="2000" step="10" />
+      <input type="number" name="tempo2" min="200" max="2000" step="10" />
+      <input type="number" name="tempo3" min="200" max="2000" step="10" />
+      <input type="number" name="tempo4" min="200" max="2000" step="10" />
+      <button type="submit">Arp</button>
+    </form>
+
+    <script src="app.js"></script>
+  </body>
+</html>
