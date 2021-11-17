@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Piano</title>
     <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       body {
         font-family: "Atkinson Hyperlegible", sans-serif;
-        background: linear-gradient(120deg, #000, rgb(59, 35, 3));
+        background: linear-gradient(to top, #000, rgb(24, 15, 3));
+        height: 100vh;
       }
 
       .keyboard {
@@ -16,7 +23,6 @@
         justify-content: center;
         grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
         gap: 12px;
-        background-color: #000;
         padding: 1em;
         margin-bottom: 2em;
       }
@@ -38,7 +44,7 @@
 
       .keyAnim {
         background-color: orange !important;
-        transform: scale(.9) translateY(-4px);
+        transform: scale(0.9) translateY(-4px);
         border-radius: 0;
       }
 
@@ -57,18 +63,25 @@
         gap: 1em;
         flex-wrap: wrap;
         justify-content: center;
+        background-color: #000c;
+        padding: 1em;
+      }
+
+      .arp {
+          display: flex;
+          flex-direction: column;
       }
 
       #arpeggiator input {
-          padding: .25em;
-          font-size: 1.25rem;
-          width: 3em;
+        padding: 0.25em;
+        font-size: 1.25rem;
+        width: 3em;
       }
 
       #arpeggiator button {
-          padding: .25em 2em;
-          height: 2.5em;
-          font-size: 1.25rem;
+        padding: 0.25em 2em;
+        height: 2.5em;
+        font-size: 1.25rem;
       }
     </style>
   </head>
@@ -102,10 +115,16 @@
     </div>
 
     <form id="arpeggiator">
-      <input type="number" name="tempo" min="200" max="2000" step="10" />
-      <input type="number" name="tempo2" min="200" max="2000" step="10" />
-      <input type="number" name="tempo3" min="200" max="2000" step="10" />
-      <input type="number" name="tempo4" min="200" max="2000" step="10" />
+      <div id="arp1" class="arp">
+        <input type="number" name="arp1" min="200" max="2000" step="10" />
+        <label>
+          1
+          <input type="checkbox" name="notes" />
+        </label>
+      </div>
+      <input type="number" name="arp2" min="200" max="2000" step="10" />
+      <input type="number" name="arp3" min="200" max="2000" step="10" />
+      <input type="number" name="arp4" min="200" max="2000" step="10" />
       <button type="submit">Arp</button>
     </form>
 
