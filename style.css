@@ -36,7 +36,7 @@ body {
 
 .keyAnim {
   background-color: orange !important;
-  transform: scale(0.9) translateY(-4px);
+  transform: scale(0.9) translateY(60px);
   border-radius: 0;
 }
 
