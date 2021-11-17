@@ -12,7 +12,8 @@ body {
 .keyboard {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(1em, 1fr));
+  grid-template-rows: 1em;
   gap: 12px;
   padding: 1em;
   max-width: 900px;
@@ -29,8 +30,8 @@ body {
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease-out;
-  height: 3em;
   border-radius: 4px;
+  color: transparent !important;
 }
 
 .keyAnim {
