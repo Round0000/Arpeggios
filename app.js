@@ -165,6 +165,33 @@ arp.addEventListener("submit", (e) => {
 
   // Config save
 
+  let currConf = {
+    arp1: {
+      tempo: 0,
+      notes: [],
+      random: false,
+      tone: "full",
+    },
+    arp2: {
+      tempo: 0,
+      notes: [],
+      random: false,
+      tone: "full",
+    },
+    arp3: {
+      tempo: 0,
+      notes: [],
+      random: false,
+      tone: "full",
+    },
+    arp4: {
+      tempo: 0,
+      notes: [],
+      random: false,
+      tone: "full",
+    },
+  };
+
   currConf.arp1.tempo = Number(arp.arp1.value);
   currConf.arp2.tempo = Number(arp.arp2.value);
   currConf.arp3.tempo = Number(arp.arp3.value);
@@ -296,7 +323,42 @@ let demos = [
       tone: "low",
     },
   },
+
+  {
+    arp1: {
+      tempo: 300,
+      notes: [],
+      random: false,
+      tone: "high",
+    },
+    arp2: {
+      tempo: 150,
+      notes: ["2", "4", "6"],
+      random: true,
+      tone: "high",
+    },
+    arp3: {
+      tempo: 900,
+      notes: ["0", "3"],
+      random: true,
+      tone: "full",
+    },
+    arp4: {
+      tempo: 0,
+      notes: [],
+      random: false,
+      tone: "",
+    },
+  },
 ];
+
+demos.forEach((demo) => {
+  const btn = document.createElement("BUTTON");
+  btn.classList.add("demoBtn");
+  btn.dataset.demo = demos.indexOf(demo);
+  btn.innerText = demos.indexOf(demo) + 1;
+  demoBtns.appendChild(btn);
+});
 
 function arpConfig(source) {
   arpeggiate(
