@@ -1,4 +1,4 @@
-let sample = "bell";
+let sample = "piano";
 
 function getNote(key) {
   let audio = new Audio(`/audio/${sample}/${key}.mp3`);
@@ -111,7 +111,14 @@ function arp(scale, tempo, tone, selectedNotes) {
       notes = scale.slice(7, scale.length - 1);
     }
   } else {
-    notes = scale;
+    if (selectedNotes.length > 0) {
+      selectedNotes.forEach((n) => {
+        notes.push(scale[n]);
+        notes.push(scale[n + 7]);
+      });
+    } else {
+      notes = scale;
+    }
   }
 
   console.log(notes);
@@ -170,30 +177,70 @@ arpeggiator.addEventListener("submit", (e) => {
 
   if (arpeggiator.arp1.value >= 100) {
     if (arpeggiator.randomArp1.checked) {
-      arpRandom(scale_C_Lydian, arpeggiator.arp1.value, arpeggiator.toneArp1.value, notesArp1);
+      arpRandom(
+        scale_C_Lydian,
+        arpeggiator.arp1.value,
+        arpeggiator.toneArp1.value,
+        notesArp1
+      );
     } else {
-      arp(scale_C_Lydian, arpeggiator.arp1.value, arpeggiator.toneArp1.value, notesArp1);
+      arp(
+        scale_C_Lydian,
+        arpeggiator.arp1.value,
+        arpeggiator.toneArp1.value,
+        notesArp1
+      );
     }
   }
   if (arpeggiator.arp2.value >= 100) {
     if (arpeggiator.randomArp2.checked) {
-      arpRandom(scale_C_Lydian, arpeggiator.arp2.value, arpeggiator.toneArp2.value, notesArp2);
+      arpRandom(
+        scale_C_Lydian,
+        arpeggiator.arp2.value,
+        arpeggiator.toneArp2.value,
+        notesArp2
+      );
     } else {
-      arp(scale_C_Lydian, arpeggiator.arp2.value, arpeggiator.toneArp2.value, notesArp2);
+      arp(
+        scale_C_Lydian,
+        arpeggiator.arp2.value,
+        arpeggiator.toneArp2.value,
+        notesArp2
+      );
     }
   }
   if (arpeggiator.arp3.value >= 100) {
     if (arpeggiator.randomArp3.checked) {
-      arpRandom(scale_C_Lydian, arpeggiator.arp3.value, arpeggiator.toneArp3.value, notesArp3);
+      arpRandom(
+        scale_C_Lydian,
+        arpeggiator.arp3.value,
+        arpeggiator.toneArp3.value,
+        notesArp3
+      );
     } else {
-      arp(scale_C_Lydian, arpeggiator.arp3.value, arpeggiator.toneArp3.value, notesArp3);
+      arp(
+        scale_C_Lydian,
+        arpeggiator.arp3.value,
+        arpeggiator.toneArp3.value,
+        notesArp3
+      );
     }
   }
   if (arpeggiator.arp4.value >= 100) {
     if (arpeggiator.randomArp4.checked) {
-      arpRandom(scale_C_Lydian, arpeggiator.arp4.value, arpeggiator.toneArp4.value, notesArp4);
+      arpRandom(
+        scale_C_Lydian,
+        arpeggiator.arp4.value,
+        arpeggiator.toneArp4.value,
+        notesArp4
+      );
     } else {
-      arp(scale_C_Lydian, arpeggiator.arp4.value, arpeggiator.toneArp4.value, notesArp4);
+      arp(
+        scale_C_Lydian,
+        arpeggiator.arp4.value,
+        arpeggiator.toneArp4.value,
+        notesArp4
+      );
     }
   }
 });
