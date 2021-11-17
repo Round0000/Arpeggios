@@ -77,7 +77,7 @@ function getRandom(min, max) {
 
 // const interval = setInterval(arp, 1000);
 
-function arp(scale, tempo, tone) {
+function arpRandom(scale, tempo, tone) {
   setInterval(() => {
     if (tone === "low") {
       playNote(scale[getRandom(0, 6)]);
@@ -89,19 +89,58 @@ function arp(scale, tempo, tone) {
   }, tempo);
 }
 
+function arp(scale, tempo, tone, selectedNotes) {
+  let notes = [];
+
+  if (tone === "low") {
+    if (selectedNotes) {
+      selectedNotes.forEach((n) => {
+        notes.push(scale.slice(0, 7)[n]);
+      });
+    } else {
+      notes = scale.slice(0, 7);
+    }
+  } else if (tone === "high") {
+    notes = scale.slice(7, scale.length - 1);
+  } else {
+    notes = scale;
+  }
+
+  let counter = 0;
+
+  setInterval(() => {
+    playNote(notes[counter]);
+    if (counter + 1 === notes.length) {
+      counter = 0;
+    } else {
+      counter++;
+    }
+  }, tempo);
+}
+
 arpeggiator.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (arpeggiator.arp.value >= 200) {
-    arp(scale_C_Lydian, arpeggiator.arp.value, "low");
+  // e.target.notes.forEach((el) => {
+  //   if (el.checked) {
+  //     console.log(el.parentElement.parentElement.id, el.value);
+  //   }
+  // });
+
+  // if (e.target.random.checked) {
+  //   console.log("Random checked");
+  // }
+
+  if (arpeggiator.arp1.value >= 100) {
+    arp(scale_C_Major, arpeggiator.arp1.value, "low", [0, 2, 4, 6]);
   }
-  if (arpeggiator.arp2.value >= 200) {
-    arp(scale_C_Lydian, arpeggiator.arp2.value, "high");
+  if (arpeggiator.arp2.value >= 100) {
+    arp(scale_C_Lydian, arpeggiator.arp2.value, "low", [0, 2, 4, 6]);
   }
-  if (arpeggiator.arp3.value >= 200) {
-    arp(scale_C_Lydian, arpeggiator.arp3.value, "high");
+  if (arpeggiator.arp3.value >= 100) {
+    arpRandom(scale_C_Lydian, arpeggiator.arp3.value, "high");
   }
-  if (arpeggiator.arp4.value >= 200) {
+  if (arpeggiator.arp4.value >= 100) {
     arp(scale_C_Lydian, arpeggiator.arp4.value, "high");
   }
 });

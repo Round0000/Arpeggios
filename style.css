@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  background: linear-gradient(to top, #111, rgb(3, 2, 6));
+}
+
+.keyboard {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
+  gap: 12px;
+  padding: 1em;
+  max-width: 900px;
+  margin: 1em auto 2em;
+}
+
+.key {
+  all: unset;
+  background-color: #111;
+  color: #fff;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  height: 3em;
+  border-radius: 4px;
+}
+
+.keyAnim {
+  background-color: orange !important;
+  transform: scale(0.9) translateY(-4px);
+  border-radius: 0;
+}
+
+.key.n {
+  background-color: snow;
+  color: #222;
+}
+.key.s {
+  background-color: #222;
+  color: snow;
+}
+
+#arpeggiator {
+  display: flex;
+  margin: 1em auto;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1em;
+}
+
+.arp {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: .5em;
+}
+
+.arp label {
+  display: flex;
+  align-items: baseline;
+  margin: .25em;
+  justify-content: space-between;
+  border: 1px solid #333;
+  background-color: #cde;
+  padding: .25em .5em;
+}
+
+#arpeggiator input[type="number"] {
+  padding: 0.25em;
+  font-size: 1.1rem;
+  margin-bottom: 1em;
+}
+
+#arpeggiator button {
+  padding: 0.25em 2em;
+  height: 2.5em;
+  font-size: 1.1rem;
+}
+
+.arp .randomCheckbox {
+  margin-top: 1em;
+  background-color: #eee;
+}
+
+.toneCheckbox span {
+  margin-top: 1em;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}

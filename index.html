@@ -4,86 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Piano</title>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: "Atkinson Hyperlegible", sans-serif;
-        background: linear-gradient(to top, #111, rgb(3, 2, 0));
-        height: 100vh;
-      }
-
-      .keyboard {
-        display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
-        gap: 12px;
-        padding: 1em;
-        max-width: 900px;
-        margin: 1em auto 2em;
-      }
-
-      .key {
-        all: unset;
-        background-color: #111;
-        color: #fff;
-        padding: 0.5em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        transition: all 0.2s ease-out;
-        height: 3em;
-        border-radius: 4px;
-        color: transparent !important;
-      }
-
-      .keyAnim {
-        background-color: orange !important;
-        transform: scale(0.9) translateY(-4px);
-        border-radius: 0;
-      }
-
-      .key.n {
-        background-color: snow;
-        color: #222;
-      }
-      .key.s {
-        background-color: #222;
-        color: snow;
-      }
-
-      #arpeggiator {
-        display: flex;
-        margin: 1em auto;
-        gap: 1em;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 1em;
-      }
-
-      .arp {
-          display: flex;
-          flex-direction: column;
-      }
-
-      #arpeggiator input {
-        padding: 0.25em;
-        font-size: 1.25rem;
-        width: 3em;
-      }
-
-      #arpeggiator button {
-        padding: 0.25em 2em;
-        height: 2.5em;
-        font-size: 1.25rem;
-      }
-    </style>
   </head>
   <body>
     <div class="keyboard">
@@ -115,16 +37,201 @@
     </div>
 
     <form id="arpeggiator">
+      <!-- Arp 1 -->
       <div id="arp1" class="arp">
-        <input type="number" name="arp1" min="200" max="2000" step="10" />
+        <input
+          type="number"
+          name="arp1"
+          min="100"
+          max="3000"
+          step="10"
+          tabindex="1"
+        />
         <label>
           1
-          <input type="checkbox" name="notes" />
+          <input type="checkbox" name="notesArp1" value="1" />
         </label>
+        <label>
+          2
+          <input type="checkbox" name="notesArp1" value="2" />
+        </label>
+        <label>
+          3
+          <input type="checkbox" name="notesArp1" value="3" />
+        </label>
+        <label>
+          4
+          <input type="checkbox" name="notesArp1" value="4" />
+        </label>
+        <label>
+          5
+          <input type="checkbox" name="notesArp1" value="5" />
+        </label>
+        <label>
+          6
+          <input type="checkbox" name="notesArp1" value="6" />
+        </label>
+        <label>
+          7
+          <input type="checkbox" name="notesArp1" value="7" />
+        </label>
+        <label class="randomCheckbox">
+          Random
+          <input type="checkbox" name="randomArp1" />
+        </label>
+        <div class="toneCheckbox">
+          <span>Tone</span>
+          <label>Low<input type="radio" name="toneArp1" value="low" /></label>
+          <label>High<input type="radio" name="toneArp1" value="high" /></label>
+        </div>
       </div>
-      <input type="number" name="arp2" min="200" max="2000" step="10" />
-      <input type="number" name="arp3" min="200" max="2000" step="10" />
-      <input type="number" name="arp4" min="200" max="2000" step="10" />
+
+      <!-- Arp 2 -->
+      <div id="arp2" class="arp">
+        <input
+          type="number"
+          name="arp2"
+          min="100"
+          max="3000"
+          step="10"
+          tabindex="2"
+        />
+        <label>
+          1
+          <input type="checkbox" name="notesArp2" value="1" />
+        </label>
+        <label>
+          2
+          <input type="checkbox" name="notesArp2" value="2" />
+        </label>
+        <label>
+          3
+          <input type="checkbox" name="notesArp2" value="3" />
+        </label>
+        <label>
+          4
+          <input type="checkbox" name="notesArp2" value="4" />
+        </label>
+        <label>
+          5
+          <input type="checkbox" name="notesArp2" value="5" />
+        </label>
+        <label>
+          6
+          <input type="checkbox" name="notesArp2" value="6" />
+        </label>
+        <label>
+          7
+          <input type="checkbox" name="notesArp2" value="7" />
+        </label>
+        <label class="randomCheckbox">
+          Random
+          <input type="checkbox" name="randomArp2" />
+        </label>
+        <div class="toneCheckbox">
+          <span>Tone</span>
+          <label>Low<input type="radio" name="toneArp2" value="low" /></label>
+          <label>High<input type="radio" name="toneArp2" value="high" /></label>
+        </div>
+      </div>
+
+      <!-- Arp 3 -->
+      <div id="arp3" class="arp">
+        <input
+          type="number"
+          name="arp3"
+          min="100"
+          max="3000"
+          step="10"
+          tabindex="3"
+        />
+        <label>
+          1
+          <input type="checkbox" name="notesArp3" value="1" />
+        </label>
+        <label>
+          2
+          <input type="checkbox" name="notesArp3" value="2" />
+        </label>
+        <label>
+          3
+          <input type="checkbox" name="notesArp3" value="3" />
+        </label>
+        <label>
+          4
+          <input type="checkbox" name="notesArp3" value="4" />
+        </label>
+        <label>
+          5
+          <input type="checkbox" name="notesArp3" value="5" />
+        </label>
+        <label>
+          6
+          <input type="checkbox" name="notesArp3" value="6" />
+        </label>
+        <label>
+          7
+          <input type="checkbox" name="notesArp3" value="7" />
+        </label>
+        <label class="randomCheckbox">
+          Random
+          <input type="checkbox" name="randomArp3" />
+        </label>
+        <div class="toneCheckbox">
+          <span>Tone</span>
+          <label>Low<input type="radio" name="toneArp3" value="low" /></label>
+          <label>High<input type="radio" name="toneArp3" value="high" /></label>
+        </div>
+      </div>
+
+      <!-- Arp 4 -->
+      <div id="arp4" class="arp">
+        <input
+          type="number"
+          name="arp4"
+          min="100"
+          max="3000"
+          step="10"
+          tabindex="4"
+        />
+        <label>
+          1
+          <input type="checkbox" name="notesArp4" value="1" />
+        </label>
+        <label>
+          2
+          <input type="checkbox" name="notesArp4" value="2" />
+        </label>
+        <label>
+          3
+          <input type="checkbox" name="notesArp4" value="3" />
+        </label>
+        <label>
+          4
+          <input type="checkbox" name="notesArp4" value="4" />
+        </label>
+        <label>
+          5
+          <input type="checkbox" name="notesArp4" value="5" />
+        </label>
+        <label>
+          6
+          <input type="checkbox" name="notesArp4" value="6" />
+        </label>
+        <label>
+          7
+          <input type="checkbox" name="notesArp4" value="7" />
+        </label>
+        <label class="randomCheckbox">
+          Random
+          <input type="checkbox" name="randomArp4" />
+        </label>
+        <div class="toneCheckbox">
+          <span>Tone</span>
+          <label>Low<input type="radio" name="toneArp4" value="low" /></label>
+          <label>High<input type="radio" name="toneArp4" value="high" /></label>
+        </div>
+      </div>
       <button type="submit">Arp</button>
     </form>
 
