@@ -374,21 +374,21 @@ function arpConfig(source) {
   arpeggiate(
     scale_C_Lydian,
     source.arp2.tempo,
-    source.arp1.random,
+    source.arp2.random,
     source.arp2.tone,
     source.arp2.notes
   );
   arpeggiate(
     scale_C_Lydian,
     source.arp3.tempo,
-    source.arp1.random,
+    source.arp3.random,
     source.arp3.tone,
     source.arp3.notes
   );
   arpeggiate(
     scale_C_Lydian,
     source.arp4.tempo,
-    source.arp1.random,
+    source.arp4.random,
     source.arp4.tone,
     source.arp4.notes
   );
