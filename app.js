@@ -396,7 +396,7 @@ function arpConfig(source) {
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.demo) {
-    arpConfig(demos[0]);
+    arpConfig(demos[e.target.dataset.demo]);
   } else if (e.target.id === "saveBtn" && !demos.includes(currConf)) {
     demos.push(currConf);
     displayDemos();
