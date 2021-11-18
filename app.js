@@ -169,26 +169,60 @@ arp.addEventListener("submit", (e) => {
   currConf.arp2.tempo = Number(arp.arp2.value);
   currConf.arp3.tempo = Number(arp.arp3.value);
   currConf.arp4.tempo = Number(arp.arp4.value);
-  arp.notesArp1.forEach((n) => {
-    if (n.checked) {
-      currConf.arp1.notes.push(n.value);
-    }
-  });
-  arp.notesArp2.forEach((n) => {
-    if (n.checked) {
-      currConf.arp2.notes.push(n.value);
-    }
-  });
-  arp.notesArp3.forEach((n) => {
-    if (n.checked) {
-      currConf.arp3.notes.push(n.value);
-    }
-  });
-  arp.notesArp4.forEach((n) => {
-    if (n.checked) {
-      currConf.arp4.notes.push(n.value);
-    }
-  });
+  
+  if (arp.notesArray1) {
+    const userArr1 = arp.notesArray1.value.trim().split(' ');
+    userArr1.forEach(n => {
+      currConf.arp1.notes.push(Number(n) - 1);
+    })
+  } else {
+    arp.notesArp1.forEach((n) => {
+      if (n.checked) {
+        currConf.arp1.notes.push(n.value);
+      }
+    });
+  }
+  
+  if (arp.notesArray2) {
+    const userArr2 = arp.notesArray2.value.trim().split(' ');
+    userArr2.forEach(n => {
+      currConf.arp2.notes.push(Number(n) - 1);
+    })
+  } else {
+    arp.notesArp2.forEach((n) => {
+      if (n.checked) {
+        currConf.arp2.notes.push(n.value);
+      }
+    });
+  }
+  
+  if (arp.notesArray3) {
+    const userArr3 = arp.notesArray3.value.trim().split(' ');
+    userArr3.forEach(n => {
+      currConf.arp3.notes.push(Number(n) - 1);
+    })
+  } else {
+    arp.notesArp3.forEach((n) => {
+      if (n.checked) {
+        currConf.arp3.notes.push(n.value);
+      }
+    });
+  }
+  
+  if (arp.notesArray4) {
+    const userArr4 = arp.notesArray4.value.trim().split(' ');
+    userArr4.forEach(n => {
+      currConf.arp4.notes.push(Number(n) - 1);
+    })
+  } else {
+    arp.notesArp4.forEach((n) => {
+      if (n.checked) {
+        currConf.arp4.notes.push(n.value);
+      }
+    });
+  }
+
+  
   currConf.arp1.random = arp.randomArp1.checked;
   currConf.arp2.random = arp.randomArp2.checked;
   currConf.arp3.random = arp.randomArp3.checked;
