@@ -169,7 +169,7 @@ arp.addEventListener("submit", (e) => {
   currConf.arp2.tempo = Number(arp.arp2.value);
   currConf.arp3.tempo = Number(arp.arp3.value);
   currConf.arp4.tempo = Number(arp.arp4.value);
-  
+
   if (arp.notesArray1) {
     const userArr1 = arp.notesArray1.value.trim().split(' ');
     userArr1.forEach(n => {
@@ -182,7 +182,7 @@ arp.addEventListener("submit", (e) => {
       }
     });
   }
-  
+
   if (arp.notesArray2) {
     const userArr2 = arp.notesArray2.value.trim().split(' ');
     userArr2.forEach(n => {
@@ -195,7 +195,7 @@ arp.addEventListener("submit", (e) => {
       }
     });
   }
-  
+
   if (arp.notesArray3) {
     const userArr3 = arp.notesArray3.value.trim().split(' ');
     userArr3.forEach(n => {
@@ -208,7 +208,7 @@ arp.addEventListener("submit", (e) => {
       }
     });
   }
-  
+
   if (arp.notesArray4) {
     const userArr4 = arp.notesArray4.value.trim().split(' ');
     userArr4.forEach(n => {
@@ -222,7 +222,7 @@ arp.addEventListener("submit", (e) => {
     });
   }
 
-  
+
   currConf.arp1.random = arp.randomArp1.checked;
   currConf.arp2.random = arp.randomArp2.checked;
   currConf.arp3.random = arp.randomArp3.checked;
@@ -489,6 +489,46 @@ let demos = [
       "notes": [],
       "random": false,
       "tone": "high"
+    }
+  },
+
+  {
+    "arp1": {
+      "tempo": 300,
+      "notes": [
+        0,
+        2,
+        6
+      ],
+      "random": false,
+      "tone": "low"
+    },
+    "arp2": {
+      "tempo": 700,
+      "notes": [
+        4,
+        1,
+        5,
+        3
+      ],
+      "random": false,
+      "tone": "high"
+    },
+    "arp3": {
+      "tempo": 200,
+      "notes": [
+        "2", "7"
+      ],
+      "random": false,
+      "tone": "full"
+    },
+    "arp4": {
+      "tempo": 0,
+      "notes": [
+        -1
+      ],
+      "random": false,
+      "tone": ""
     }
   }
 
