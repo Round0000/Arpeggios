@@ -323,6 +323,33 @@ let demos = [
       tone: "",
     },
   },
+
+  {
+    arp1: {
+      tempo: 400,
+      notes: ["0", "1", "6", "2", "4", "4", "4", "4"],
+      random: false,
+      tone: "low",
+    },
+    arp2: {
+      tempo: 1000,
+      notes: ["3", "6", "0", "3", "1", "1", "1", "1"],
+      random: false,
+      tone: "low",
+    },
+    arp3: {
+      tempo: 1600,
+      notes: ["6"],
+      random: false,
+      tone: "low",
+    },
+    arp4: {
+      tempo: 600,
+      notes: ["0", "2", "3", "5", "2", "4"],
+      random: true,
+      tone: "high",
+    },
+  },
 ];
 
 function displayDemos() {
@@ -340,33 +367,32 @@ function arpConfig(source) {
   arpeggiate(
     scale_C_Lydian,
     source.arp1.tempo,
-    false,
+    source.arp1.random,
     source.arp1.tone,
     source.arp1.notes
   );
   arpeggiate(
     scale_C_Lydian,
     source.arp2.tempo,
-    false,
+    source.arp1.random,
     source.arp2.tone,
     source.arp2.notes
   );
   arpeggiate(
     scale_C_Lydian,
     source.arp3.tempo,
-    false,
+    source.arp1.random,
     source.arp3.tone,
     source.arp3.notes
   );
   arpeggiate(
     scale_C_Lydian,
     source.arp4.tempo,
-    false,
+    source.arp1.random,
     source.arp4.tone,
     source.arp4.notes
   );
 }
-
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.demo) {
