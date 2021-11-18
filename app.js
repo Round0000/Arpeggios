@@ -203,29 +203,71 @@ arp.addEventListener("submit", (e) => {
   //
 
   const notesArp1 = [];
-  arp.notesArp1.forEach((n) => {
-    if (n.checked) {
-      notesArp1.push(n.value);
-    }
-  });
   const notesArp2 = [];
-  arp.notesArp2.forEach((n) => {
-    if (n.checked) {
-      notesArp2.push(n.value);
-    }
-  });
   const notesArp3 = [];
-  arp.notesArp3.forEach((n) => {
-    if (n.checked) {
-      notesArp3.push(n.value);
-    }
-  });
   const notesArp4 = [];
-  arp.notesArp4.forEach((n) => {
-    if (n.checked) {
-      notesArp4.push(n.value);
-    }
-  });
+
+  if (arp.notesArray1) {
+    const userArr1 = arp.notesArray1.value.trim().split(' ');
+    console.log(userArr1);
+    userArr1.forEach(n => {
+      notesArp1.push(Number(n) - 1);
+    })
+  } else {
+    arp.notesArp1.forEach((n) => {
+      if (n.checked) {
+        notesArp1.push(n.value);
+      }
+    });
+  }
+
+  if (arp.notesArray2) {
+    const userArr2 = arp.notesArray2.value.trim().split(' ');
+    console.log(userArr2);
+    userArr2.forEach(n => {
+      notesArp2.push(Number(n) - 1);
+    })
+  } else {
+    arp.notesArp2.forEach((n) => {
+      if (n.checked) {
+        notesArp2.push(n.value);
+      }
+    });
+  }
+
+  if (arp.notesArray3) {
+    const userArr3 = arp.notesArray3.value.trim().split(' ');
+    console.log(userArr3);
+    userArr3.forEach(n => {
+      notesArp3.push(Number(n) - 1);
+    })
+  } else {
+    arp.notesArp3.forEach((n) => {
+      if (n.checked) {
+        notesArp3.push(n.value);
+      }
+    });
+  }
+
+  if (arp.notesArray4) {
+    const userArr4 = arp.notesArray4.value.trim().split(' ');
+    console.log(userArr4);
+    userArr4.forEach(n => {
+      notesArp4.push(Number(n) - 1);
+    })
+    console.log(notesArp4);
+  } else {
+    arp.notesArp4.forEach((n) => {
+      if (n.checked) {
+        notesArp4.push(n.value);
+      }
+    });
+  }
+
+  console.log(notesArp1);
+  console.log(notesArp2);
+  console.log(notesArp3);
+  console.log(notesArp4);
 
   if (arp.arp1.value >= 100) {
     arpeggiate(
@@ -350,6 +392,72 @@ let demos = [
       tone: "high",
     },
   },
+
+  {
+    "arp1": {
+      "tempo": 600,
+      "notes": [
+        "1",
+        "3",
+        "5"
+      ],
+      "random": false,
+      "tone": "high"
+    },
+    "arp2": {
+      "tempo": 900,
+      "notes": [
+        "2", "3", "6"
+      ],
+      "random": false,
+      "tone": "low"
+    },
+    "arp3": {
+      "tempo": 900,
+      "notes": [
+        "1",
+        "2",
+        "4",
+        "6",
+      ],
+      "random": true,
+      "tone": "high"
+    },
+    "arp4": {
+      "tempo": 300,
+      "notes": ["0", "0", "0", "0", "3", "3", "3", "5"],
+      "random": false,
+      "tone": "low"
+    }
+  },
+
+  {
+    "arp1": {
+      "tempo": 150,
+      "notes": [],
+      "random": false,
+      "tone": "low"
+    },
+    "arp2": {
+      "tempo": 300,
+      "notes": [],
+      "random": false,
+      "tone": "high"
+    },
+    "arp3": {
+      "tempo": 600,
+      "notes": [],
+      "random": false,
+      "tone": "high"
+    },
+    "arp4": {
+      "tempo": 750,
+      "notes": [],
+      "random": false,
+      "tone": "high"
+    }
+  }
+
 ];
 
 function displayDemos() {

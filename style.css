@@ -122,6 +122,20 @@ body {
   padding: .5em 1em;
 }
 
+label.notesArray {
+  padding: 0;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  justify-content: center;
+}
+
+label.notesArray textarea {
+  font-size: 1rem;
+  padding: .25em .7em;  
+  resize: none;
+}
+
 /* Demos */
 .demos {
   margin-top: 3em;
