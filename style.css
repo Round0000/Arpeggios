@@ -37,7 +37,7 @@ body {
 
 .keyAnim {
   background-color: orange !important;
-  transform: scale(0.9) translateY(60px);
+  transform: translateY(60px);
   border-radius: 0;
 }
 
@@ -162,3 +162,5 @@ label.notesArray textarea {
   border: 2px solid #333;
   border-radius: 6px;
 }
+
+
