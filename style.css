@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-family: "Atkinson Hyperlegible", "Tahoma", sans-serif;
   background: linear-gradient(to top, #111, rgb(3, 2, 6));
   height: 100vh;
 }
@@ -115,6 +115,13 @@ body {
   text-align: center;
 }
 
+#saveBtn {
+  display: block;
+  margin: 1.5em auto;
+  font-size: 1rem;
+  padding: .5em 1em;
+}
+
 /* Demos */
 .demos {
   margin-top: 3em;
@@ -128,10 +135,16 @@ body {
 #demoBtns {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .demoBtn {
-  display: block;
-  padding: .5em 2em;
+  all: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5em 1em;
   margin: .5em;
+  border: 2px solid #333;
+  border-radius: 6px;
 }

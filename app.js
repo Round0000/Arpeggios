@@ -8,7 +8,7 @@ let currConf = {
     random: false,
     tone: "full",
   },
-  arp1: {
+  arp2: {
     tempo: 0,
     notes: [],
     random: false,
@@ -164,33 +164,6 @@ arp.addEventListener("submit", (e) => {
   e.preventDefault();
 
   // Config save
-
-  let currConf = {
-    arp1: {
-      tempo: 0,
-      notes: [],
-      random: false,
-      tone: "full",
-    },
-    arp2: {
-      tempo: 0,
-      notes: [],
-      random: false,
-      tone: "full",
-    },
-    arp3: {
-      tempo: 0,
-      notes: [],
-      random: false,
-      tone: "full",
-    },
-    arp4: {
-      tempo: 0,
-      notes: [],
-      random: false,
-      tone: "full",
-    },
-  };
 
   currConf.arp1.tempo = Number(arp.arp1.value);
   currConf.arp2.tempo = Number(arp.arp2.value);
@@ -352,13 +325,16 @@ let demos = [
   },
 ];
 
-demos.forEach((demo) => {
-  const btn = document.createElement("BUTTON");
-  btn.classList.add("demoBtn");
-  btn.dataset.demo = demos.indexOf(demo);
-  btn.innerText = demos.indexOf(demo) + 1;
-  demoBtns.appendChild(btn);
-});
+function displayDemos() {
+  demoBtns.innerHTML = "";
+  demos.forEach((demo) => {
+    const btn = document.createElement("BUTTON");
+    btn.classList.add("demoBtn");
+    btn.dataset.demo = demos.indexOf(demo);
+    btn.innerText = demos.indexOf(demo) + 1;
+    demoBtns.appendChild(btn);
+  });
+}
 
 function arpConfig(source) {
   arpeggiate(
@@ -391,8 +367,20 @@ function arpConfig(source) {
   );
 }
 
+
 document.addEventListener("click", (e) => {
   if (e.target.dataset.demo) {
     arpConfig(demos[0]);
+  } else if (e.target.id === "saveBtn" && !demos.includes(currConf)) {
+    demos.push(currConf);
+    displayDemos();
+    localStorage.setItem("demos", JSON.stringify(demos));
   }
 });
+
+if (localStorage.getItem("demos")) {
+  demos = JSON.parse(localStorage.getItem("demos"));
+  console.log(demos);
+}
+
+displayDemos();
