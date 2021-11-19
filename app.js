@@ -533,6 +533,113 @@ let demos = [
       tone: "low",
     },
   },
+
+  {
+    arp1: {
+      tempo: 150,
+      notes: [1, 2, 6, 4, 0, 5, 4, 2, 3, 4, 6, 5, 4, 2, 3],
+      random: false,
+      tone: "high",
+    },
+    arp2: {
+      tempo: 600,
+      notes: [0, 0, 1, 5, 4, 4, 5, 2],
+      random: false,
+      tone: "low",
+    },
+    arp3: {
+      tempo: 600,
+      notes: [2, 2, 5, 6, 1, 0, 6, 5],
+      random: false,
+      tone: "low",
+    },
+    arp4: {
+      tempo: 0,
+      notes: [],
+      random: false,
+      tone: "high",
+    },
+  },
+
+  {
+    arp1: {
+      tempo: 200,
+      notes: [2, 2, 1, 6],
+      random: false,
+      tone: "low",
+    },
+    arp2: {
+      tempo: 400,
+      notes: [1, 1, 1, 1, 2, 5, 0, 3],
+      random: false,
+      tone: "high",
+    },
+    arp3: {
+      tempo: 600,
+      notes: [2, 2, 3, 4, 6, 5, 4, 3],
+      random: false,
+      tone: "high",
+    },
+    arp4: {
+      tempo: 0,
+      notes: [-1],
+      random: false,
+      tone: "",
+    },
+  },
+
+  {
+    arp1: {
+      tempo: 200,
+      notes: [0, 0, 0, 2],
+      random: false,
+      tone: "full",
+    },
+    arp2: {
+      tempo: 200,
+      notes: [4, 6, 5, 4, 5, 4, 6, 3],
+      random: false,
+      tone: "full",
+    },
+    arp3: {
+      tempo: 200,
+      notes: [2, 0, 2, 0, 0, 2, 4, 4],
+      random: false,
+      tone: "full",
+    },
+    arp4: {
+      tempo: 800,
+      notes: [6, 4, 3, 2, 5, 4, 2, 5],
+      random: false,
+      tone: "high",
+    },
+  },
+  {
+    arp1: {
+      tempo: 200,
+      notes: [0, 2, 4, 0, 2, 4, 6, 0],
+      random: false,
+      tone: "low",
+    },
+    arp2: {
+      tempo: 200,
+      notes: [3, 4, 6, 3, 4, 5, 3, 4, 2, 3, 4, 5, 3, 4, 6, 1],
+      random: false,
+      tone: "high",
+    },
+    arp3: {
+      tempo: 200,
+      notes: [0, 0, 6, 0, 0, 0, 6, 0],
+      random: false,
+      tone: "low",
+    },
+    arp4: {
+      tempo: 1600,
+      notes: [6],
+      random: false,
+      tone: "full",
+    },
+  },
 ];
 
 function displayDemos() {
@@ -580,6 +687,10 @@ function arpConfig(source) {
 document.addEventListener("click", (e) => {
   if (e.target.dataset.demo) {
     arpConfig(demos[e.target.dataset.demo]);
+    codeDisplay.innerText =
+      e.target.innerText +
+      " => => => " +
+      JSON.stringify(demos[e.target.dataset.demo]);
   } else if (e.target.id === "saveBtn" && !demos.includes(currConf)) {
     demos.push(currConf);
     displayDemos();
