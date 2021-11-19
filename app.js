@@ -171,10 +171,10 @@ arp.addEventListener("submit", (e) => {
   currConf.arp4.tempo = Number(arp.arp4.value);
 
   if (arp.notesArray1) {
-    const userArr1 = arp.notesArray1.value.trim().split(' ');
-    userArr1.forEach(n => {
+    const userArr1 = arp.notesArray1.value.trim().split(" ");
+    userArr1.forEach((n) => {
       currConf.arp1.notes.push(Number(n) - 1);
-    })
+    });
   } else {
     arp.notesArp1.forEach((n) => {
       if (n.checked) {
@@ -184,10 +184,10 @@ arp.addEventListener("submit", (e) => {
   }
 
   if (arp.notesArray2) {
-    const userArr2 = arp.notesArray2.value.trim().split(' ');
-    userArr2.forEach(n => {
+    const userArr2 = arp.notesArray2.value.trim().split(" ");
+    userArr2.forEach((n) => {
       currConf.arp2.notes.push(Number(n) - 1);
-    })
+    });
   } else {
     arp.notesArp2.forEach((n) => {
       if (n.checked) {
@@ -197,10 +197,10 @@ arp.addEventListener("submit", (e) => {
   }
 
   if (arp.notesArray3) {
-    const userArr3 = arp.notesArray3.value.trim().split(' ');
-    userArr3.forEach(n => {
+    const userArr3 = arp.notesArray3.value.trim().split(" ");
+    userArr3.forEach((n) => {
       currConf.arp3.notes.push(Number(n) - 1);
-    })
+    });
   } else {
     arp.notesArp3.forEach((n) => {
       if (n.checked) {
@@ -210,10 +210,10 @@ arp.addEventListener("submit", (e) => {
   }
 
   if (arp.notesArray4) {
-    const userArr4 = arp.notesArray4.value.trim().split(' ');
-    userArr4.forEach(n => {
+    const userArr4 = arp.notesArray4.value.trim().split(" ");
+    userArr4.forEach((n) => {
       currConf.arp4.notes.push(Number(n) - 1);
-    })
+    });
   } else {
     arp.notesArp4.forEach((n) => {
       if (n.checked) {
@@ -221,7 +221,6 @@ arp.addEventListener("submit", (e) => {
       }
     });
   }
-
 
   currConf.arp1.random = arp.randomArp1.checked;
   currConf.arp2.random = arp.randomArp2.checked;
@@ -242,11 +241,11 @@ arp.addEventListener("submit", (e) => {
   const notesArp4 = [];
 
   if (arp.notesArray1) {
-    const userArr1 = arp.notesArray1.value.trim().split(' ');
+    const userArr1 = arp.notesArray1.value.trim().split(" ");
     console.log(userArr1);
-    userArr1.forEach(n => {
+    userArr1.forEach((n) => {
       notesArp1.push(Number(n) - 1);
-    })
+    });
   } else {
     arp.notesArp1.forEach((n) => {
       if (n.checked) {
@@ -256,11 +255,11 @@ arp.addEventListener("submit", (e) => {
   }
 
   if (arp.notesArray2) {
-    const userArr2 = arp.notesArray2.value.trim().split(' ');
+    const userArr2 = arp.notesArray2.value.trim().split(" ");
     console.log(userArr2);
-    userArr2.forEach(n => {
+    userArr2.forEach((n) => {
       notesArp2.push(Number(n) - 1);
-    })
+    });
   } else {
     arp.notesArp2.forEach((n) => {
       if (n.checked) {
@@ -270,11 +269,11 @@ arp.addEventListener("submit", (e) => {
   }
 
   if (arp.notesArray3) {
-    const userArr3 = arp.notesArray3.value.trim().split(' ');
+    const userArr3 = arp.notesArray3.value.trim().split(" ");
     console.log(userArr3);
-    userArr3.forEach(n => {
+    userArr3.forEach((n) => {
       notesArp3.push(Number(n) - 1);
-    })
+    });
   } else {
     arp.notesArp3.forEach((n) => {
       if (n.checked) {
@@ -284,11 +283,11 @@ arp.addEventListener("submit", (e) => {
   }
 
   if (arp.notesArray4) {
-    const userArr4 = arp.notesArray4.value.trim().split(' ');
+    const userArr4 = arp.notesArray4.value.trim().split(" ");
     console.log(userArr4);
-    userArr4.forEach(n => {
+    userArr4.forEach((n) => {
       notesArp4.push(Number(n) - 1);
-    })
+    });
     console.log(notesArp4);
   } else {
     arp.notesArp4.forEach((n) => {
@@ -428,110 +427,112 @@ let demos = [
   },
 
   {
-    "arp1": {
-      "tempo": 600,
-      "notes": [
-        "1",
-        "3",
-        "5"
-      ],
-      "random": false,
-      "tone": "high"
+    arp1: {
+      tempo: 600,
+      notes: ["1", "3", "5"],
+      random: false,
+      tone: "high",
     },
-    "arp2": {
-      "tempo": 900,
-      "notes": [
-        "2", "3", "6"
-      ],
-      "random": false,
-      "tone": "low"
+    arp2: {
+      tempo: 900,
+      notes: ["2", "3", "6"],
+      random: false,
+      tone: "low",
     },
-    "arp3": {
-      "tempo": 900,
-      "notes": [
-        "1",
-        "2",
-        "4",
-        "6",
-      ],
-      "random": true,
-      "tone": "high"
+    arp3: {
+      tempo: 900,
+      notes: ["1", "2", "4", "6"],
+      random: true,
+      tone: "high",
     },
-    "arp4": {
-      "tempo": 300,
-      "notes": ["0", "0", "0", "0", "3", "3", "3", "5"],
-      "random": false,
-      "tone": "low"
-    }
+    arp4: {
+      tempo: 300,
+      notes: ["0", "0", "0", "0", "3", "3", "3", "5"],
+      random: false,
+      tone: "low",
+    },
   },
 
   {
-    "arp1": {
-      "tempo": 150,
-      "notes": [],
-      "random": false,
-      "tone": "low"
+    arp1: {
+      tempo: 150,
+      notes: [],
+      random: false,
+      tone: "low",
     },
-    "arp2": {
-      "tempo": 300,
-      "notes": [],
-      "random": false,
-      "tone": "high"
+    arp2: {
+      tempo: 300,
+      notes: [],
+      random: false,
+      tone: "high",
     },
-    "arp3": {
-      "tempo": 600,
-      "notes": [],
-      "random": false,
-      "tone": "high"
+    arp3: {
+      tempo: 600,
+      notes: [],
+      random: false,
+      tone: "high",
     },
-    "arp4": {
-      "tempo": 750,
-      "notes": [],
-      "random": false,
-      "tone": "high"
-    }
+    arp4: {
+      tempo: 750,
+      notes: [],
+      random: false,
+      tone: "high",
+    },
   },
 
   {
-    "arp1": {
-      "tempo": 300,
-      "notes": [
-        0,
-        2,
-        6
-      ],
-      "random": false,
-      "tone": "low"
+    arp1: {
+      tempo: 300,
+      notes: [0, 2, 6],
+      random: false,
+      tone: "low",
     },
-    "arp2": {
-      "tempo": 700,
-      "notes": [
-        4,
-        1,
-        5,
-        3
-      ],
-      "random": false,
-      "tone": "high"
+    arp2: {
+      tempo: 700,
+      notes: [4, 1, 5, 3],
+      random: false,
+      tone: "high",
     },
-    "arp3": {
-      "tempo": 200,
-      "notes": [
-        "2", "7"
-      ],
-      "random": false,
-      "tone": "full"
+    arp3: {
+      tempo: 200,
+      notes: ["2", "7"],
+      random: false,
+      tone: "full",
     },
-    "arp4": {
-      "tempo": 0,
-      "notes": [
-        -1
-      ],
-      "random": false,
-      "tone": ""
-    }
-  }
+    arp4: {
+      tempo: 0,
+      notes: [-1],
+      random: false,
+      tone: "",
+    },
+  },
 
+  {
+    arp1: {
+      tempo: 250,
+      notes: [2, 3, 5, 1, 0, 6, 1, 2],
+      random: false,
+      tone: "high",
+    },
+    arp2: {
+      tempo: 500,
+      notes: [0, 5, 0, 4],
+      random: false,
+      tone: "low",
+    },
+    arp3: {
+      tempo: 1000,
+      notes: [1, 2, 3, 5],
+      random: true,
+      tone: "high",
+    },
+    arp4: {
+      tempo: 750,
+      notes: [6, 4, 1, 2],
+      random: false,
+      tone: "low",
+    },
+  },
 ];
 
 function displayDemos() {
@@ -592,5 +593,3 @@ if (localStorage.getItem("demos")) {
 }
 
 displayDemos();
-
-
